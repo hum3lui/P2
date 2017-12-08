@@ -1,0 +1,23 @@
+#!/usr/bin/env groovy
+
+pipeline {
+	agent any
+	stages {
+		stage('start') {
+			steps{
+				echo 'start Hello World'
+			}
+		}
+		stage('end') {
+			steps{
+				echo 'end Hello World'
+			}
+		}
+	}
+	post {
+		always{
+		echo 'Bye'
+		}
+	}
+	
+}
