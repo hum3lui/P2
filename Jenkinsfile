@@ -1,10 +1,11 @@
+#!/usr/bin/env groovy
 pipeline {
     agent any
     stages {
         stage('Build') {
             steps {
                 def target = 'Jenkins'
-                echo 'Building in ${target} ...'
+                echo "Building in ${target} ..."
             }
         }
         stage('Test') {
