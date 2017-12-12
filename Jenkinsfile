@@ -13,8 +13,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
-                javac helloWorld.java
-                java helloWorld
+                bat javac helloWorld.java
+                bat java helloWorld
             }
         }
         stage('Deploy') {
