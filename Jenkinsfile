@@ -11,8 +11,12 @@ pipeline {
             }
         }
         stage('Test') {
+            environment {
+                PATH = "%path%;C:\\Windows\\SysWOW64;C:\\Program Files (x86)\\Java\\jdk1.8.0_151\\bin"
+            }   
             steps {
                 echo 'Testing...'
+                echo '%Path%'
                 bat 'javac helloWorld.java'
                 bat 'java helloWorld'
             }
