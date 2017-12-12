@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                def Target = 'Jenkins'
-                echo 'Building in ${Target} ...'
+                def target = 'Jenkins'
+                echo 'Building in ${target} ...'
             }
         }
         stage('Test') {
