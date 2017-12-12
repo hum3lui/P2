@@ -7,12 +7,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Building in ${params.Target} ..."
+                echo "Building in ${Target} ...""
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
+                javac helloWorld.java
+                java helloWorld
             }
         }
         stage('Deploy') {
