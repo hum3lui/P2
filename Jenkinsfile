@@ -1,12 +1,9 @@
 pipeline {
     agent any
-    parameters {
-        string(name: 'Target', defaultValue: 'Jenkins', description: 'Who should I say hello to?')
-    }
-
     stages {
         stage('Build') {
             steps {
+                def Target = 'Jenkins'
                 echo 'Building in ${Target} ...'
             }
         }
