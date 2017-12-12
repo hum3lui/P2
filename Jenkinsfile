@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building in ${params.Target} ...'
+                echo 'Building in %params.Target% ...'
             }
         }
         stage('Test') {
