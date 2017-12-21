@@ -14,7 +14,7 @@ pipeline {
             steps {
                 parallel(
                     a: {
-                        bat 'set path=%path%C:\\Windows\\SysWOW64;C:\\Program Files (x86)\\Java\\jdk1.8.0_151\\bin;'
+                        bat  "set path=%path%C:\\Program Files (x86)\\Java\\jdk1.8.0_151\\bin;"
                         bat 'javac helloWorld.java'
                         bat 'java helloWorld'
                     },
