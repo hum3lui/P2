@@ -17,11 +17,17 @@ pipeline {
             steps {
                 parallel(
                     a: {
+                    agent { label 'windows'}
+                    steps{
                         bat 'javac helloWorld.java'
                         bat 'java helloWorld'
+                    }
                     },
                     b: {
+                    agent { label 'windows'}
+                    steps{   
                         echo 'it is branch b'
+                    }
                     }
                 )
             }
