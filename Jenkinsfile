@@ -5,24 +5,25 @@ pipeline {
     }
 
     stages {
-    parallel {
         stage('Build') {
             steps {
                 echo "Building in ${Target} ..."
             }
         }
-        stage('Test') {
-            environment {
-                PATH = "%path%;C:\\Windows\\SysWOW64;C:\\Program Files (x86)\\Java\\jdk1.8.0_151\\bin"
-            }   
+        stage('Test') { 
             steps {
-                echo 'Testing...'
-                bat 'echo %Path%'
-                bat 'javac helloWorld.java'
-                bat 'java helloWorld'
+                parallel(
+                    a: {
+                        bat 'set path=%path%C:\\Windows\\SysWOW64;C:\\Program Files (x86)\\Java\\jdk1.8.0_151\\bin;'
+                        bat 'javac helloWorld.java'
+                        bat 'java helloWorld'
+                    },
+                    b: {
+                        echo 'it is branch b'
+                    }
+                )
             }
         }
-    }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
