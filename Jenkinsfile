@@ -16,7 +16,7 @@ pipeline {
             }   
             steps {
                 echo 'Testing...'
-                echo '%Path%'
+                bat 'echo %Path%'
                 bat 'javac helloWorld.java'
                 bat 'java helloWorld'
             }
