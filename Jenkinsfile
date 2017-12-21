@@ -5,6 +5,7 @@ pipeline {
     }
 
     stages {
+    parallel {
         stage('Build') {
             steps {
                 echo "Building in ${Target} ..."
@@ -21,6 +22,7 @@ pipeline {
                 bat 'java helloWorld'
             }
         }
+    }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
