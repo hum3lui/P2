@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             agent {
-                label "windows"
+                label "win1"
             }
             steps {
                 echo "Building in ${Target} ..."
@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Deploy') {
             agent {
-                label "windows"
+                label "win1"
             }
             steps {
                 echo 'Deploying...'
