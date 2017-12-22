@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Test') { 
             agent {
-                label "win1"
+                label "windows"
             }
             environment {
                 PATH = "%path%;C:\\Windows\\SysWOW64;C:\\Program Files (x86)\\Java\\jdk1.8.0_151\\bin"
