@@ -1,16 +1,22 @@
 pipeline {
-    agent any
+    agent none
     parameters {
         string(name: 'Target', defaultValue: 'Jenkins', description: 'Who should I say hello to?')
     }
 
     stages {
         stage('Build') {
+            agent {
+                label "windows"
+            }
             steps {
                 echo "Building in ${Target} ..."
             }
         }
         stage('Test') { 
+            agent {
+                label "win1"
+            }
             environment {
                 PATH = "%path%;C:\\Windows\\SysWOW64;C:\\Program Files (x86)\\Java\\jdk1.8.0_151\\bin"
             }   
@@ -27,6 +33,9 @@ pipeline {
             }
         }
         stage('Deploy') {
+            agent {
+                label "windows"
+            }
             steps {
                 echo 'Deploying...'
             }
