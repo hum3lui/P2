@@ -23,15 +23,8 @@ pipeline {
 		                PATH = "%path%;C:\\Windows\\SysWOW64;C:\\Program Files (x86)\\Java\\jdk1.8.0_151\\bin"
 		            }   
 		            steps {
-		                parallel(
-		                    a: {
-		                        bat 'javac helloWorld.java'
-		                        bat 'java helloWorld'
-		                    },
-		                    b: {
-		                        echo 'it is branch b'
-		                    }
-		                )
+		                bat 'javac helloWorld.java'
+		                bat 'java helloWorld'
 		            }
 		        }
 		        stage('Deploy') {
