@@ -13,6 +13,7 @@ pipeline {
                 echo "Building in ${Target} ..."
             }
         }
+    parallel {
         stage('Test') { 
             agent {
                 label "windows"
@@ -41,13 +42,15 @@ pipeline {
             }
         }
     }
+    }
+
 
      post {
         success{
-            echo 'updated message'
+            echo '[updated message]'
         }
         failure {
-            echo 'rollback process'
+            echo '[rollback process]'
         }
         
     }
