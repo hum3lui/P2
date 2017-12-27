@@ -13,35 +13,37 @@ pipeline {
                 echo "Building in ${Target} ..."
             }
         }
-    parallel {
-        stage('Test') { 
-            agent {
-                label "windows"
-            }
-            environment {
-                PATH = "%path%;C:\\Windows\\SysWOW64;C:\\Program Files (x86)\\Java\\jdk1.8.0_151\\bin"
-            }   
-            steps {
-                parallel(
-                    a: {
-                        bat 'javac helloWorld.java'
-                        bat 'java helloWorld'
-                    },
-                    b: {
-                        echo 'it is branch b'
-                    }
-                )
-            }
-        }
-        stage('Deploy') {
-            agent {
-                label "windows"
-            }
-            steps {
-                echo 'Deploying...'
-            }
-        }
-    }
+	    stage('grouped_stage'){
+		    parallel {
+		        stage('Test') { 
+		            agent {
+		                label "windows"
+		            }
+		            environment {
+		                PATH = "%path%;C:\\Windows\\SysWOW64;C:\\Program Files (x86)\\Java\\jdk1.8.0_151\\bin"
+		            }   
+		            steps {
+		                parallel(
+		                    a: {
+		                        bat 'javac helloWorld.java'
+		                        bat 'java helloWorld'
+		                    },
+		                    b: {
+		                        echo 'it is branch b'
+		                    }
+		                )
+		            }
+		        }
+		        stage('Deploy') {
+		            agent {
+		                label "windows"
+		            }
+		            steps {
+		                echo 'Deploying...'
+		            }
+		        }
+		    }
+		}
     }
 
 
